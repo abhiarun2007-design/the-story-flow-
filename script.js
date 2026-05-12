@@ -1,3 +1,46 @@
+const fields = [
+  "premise",
+  "character",
+  "goal",
+  "conflict",
+  "beginning",
+  "middle",
+  "ending",
+  "scene1",
+  "scene2",
+  "scene3"
+];
+
+
+// LOAD SAVED DATA
+window.onload = function () {
+
+  fields.forEach(function(id) {
+
+    const savedData = localStorage.getItem(id);
+
+    if (savedData) {
+      document.getElementById(id).value = savedData;
+    }
+
+  });
+
+};
+
+
+// AUTO SAVE WHILE TYPING
+fields.forEach(function(id) {
+
+  document.getElementById(id).addEventListener("input", function() {
+
+    localStorage.setItem(id, this.value);
+
+  });
+
+});
+
+
+// GENERATE STORY
 function generateStory() {
 
   const premise = document.getElementById("premise").value;
